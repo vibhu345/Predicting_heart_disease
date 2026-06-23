@@ -13,6 +13,10 @@ def evaluate_models(X_train,Y_train,X_test,Y_test,models,params):
         report={}
         for i in range(len(list(models))):
             model=list(models.values())[i]
+            para=params[list(models.keys())[i]]
+            gs=GridSearchCV(model,para,cv=3)
+            gs.fit(X_train,Y_train)
+            model.set_params(**gs.best_params_)
             model.fit(X_train,Y_train)
             Y_train_pred= model.predict(X_train)
             Y_test_pred=model.predict(X_test)
@@ -25,9 +29,6 @@ def evaluate_models(X_train,Y_train,X_test,Y_test,models,params):
             raise CustomException(e,sys)
     
             
-
-
-
 def save_object(file_path,obj):
     try:
         dir_path=os.path.dirname(file_path)
@@ -37,4 +38,10 @@ def save_object(file_path,obj):
 
     except Exception as e:
         raise CustomException(e,sys)
+def load_object(file_path):
+    try:
+        with open (file_path,"rb") as file_obj:
+         return dill.load(file_obj)
+    except Exception as e:
+         raise CustomException(e,sys)
 
