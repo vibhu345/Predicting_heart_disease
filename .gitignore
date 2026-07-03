@@ -3,8 +3,6 @@ __pycache__/
 *.py[codz]
 *$py.class
 
-
-
 # C extensions
 *.so
 
@@ -154,7 +152,6 @@ activemq-data/
 .envrc
 .venv
 env/
-venv/
 venv1/
 ENV/
 env.bak/

@@ -1,1 +1,1 @@
-# END to END ML PROJECT
+# This project aims at predicting the whether the paerson will get an heart attack in next 10 years or not
