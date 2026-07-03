@@ -14,5 +14,5 @@ class CustomException(Exception):
         self.error_message=error_message_detail(error_message,error_detail)
     def __str__(self):
         return self.error_message
-if __name__=="__main__":
+if __name__== "__main__":
    logging.info("Custom Exception started")
