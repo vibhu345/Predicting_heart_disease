@@ -7,6 +7,7 @@ from src.exception import CustomException
 from src.components.data_transformation import DataTransformation
 from sklearn.utils import resample
 from src.logger import logging
+from src.components.model_training import ModelTrainer
 class DataIngestionConfig:
     # defining paths in this class
     train_data_path=os.path.join("artifacts","training_data_file.csv")
@@ -37,10 +38,16 @@ class DataIngestion:
         except Exception as e:
             raise CustomException (e,sys)
         
+        #python -m src.your_script_name
+
+        
 if __name__=="__main__":
     obj1=DataIngestion()
     train_data_path,test_data_path=obj1.initiate_data_ingestion()
     obj2=DataTransformation()
-    train_data,test_data,preprocessor_path=obj2.initiate_data_transformation(train_data_path,test_data_path)
+    test_data,train_data,preprocessor_path=obj2.initiate_data_transformation(train_data_path,test_data_path)
+    obj3=ModelTrainer()
+    accuracy_score=obj3.initiate_model_training(test_data,train_data)
+    print(accuracy_score)
 
 

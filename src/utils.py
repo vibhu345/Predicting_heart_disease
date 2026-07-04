@@ -2,6 +2,7 @@ import os
 from src.exception import CustomException
 import pickle
 import sys
+import dill
 from sklearn.model_selection import GridSearchCV
 from src.logger import logging
 from sklearn.metrics import accuracy_score
@@ -13,6 +14,12 @@ def save_object(file_path,obj):
             pickle.dump(obj,file_obj)
     except Exception as e:
         raise CustomException(e,sys)
+def load_object(file_path):
+    try:
+        with open(file_path,"rb") as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        return CustomException(e,sys)
 def evaluate_models(x_train,y_train,x_test,y_test,models,param):
     logging.info("list of modles",list(models))
     logging.info("hiha",list(models.values()))

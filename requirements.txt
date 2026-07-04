@@ -2,3 +2,7 @@ Pandas
 Numpy
 xgboost
 Scikit-Learn
+catboost
+xgboost
+flask
+dill

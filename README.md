@@ -1,1 +1,1 @@
-# This project aims at predicting the whether the paerson will get an heart attack in next 10 years or not
+# This project aims at predicting the whether the person will get an heart attack in next 10 years or not
